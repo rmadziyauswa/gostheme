@@ -66,7 +66,7 @@ html,body
 
 
 
-	.menu-topmostnav ul li, #primary-navigation ul li,#social-connect>ul>li
+	.menu-topmostnav ul li, #primary-navigation ul.menu>li,#social-connect>ul>li
 	{
 		display: inline;
 		margin-right: 10px;
@@ -79,9 +79,13 @@ html,body
 		background-color: #333333;
 		width: 960px;
 		height: 50px;
-		overflow: hidden;
+		/*overflow: hidden;*/
+		overflow: visible;
 		font-size: 25px;
-		 margin: 0 auto; 
+		margin: 0 auto;
+		/* float: left; */
+		position: relative;
+		left: -17px;
 	}
 
 	#primary-navigation div
@@ -89,11 +93,40 @@ html,body
 		margin: 0px;
 	}
 
-	ul.sub-menu
-	{
-		display: none;
+	ul.menu>li>ul.sub-menu {
+		 display: none; 
+		width: 180px;
+		position: absolute;
+		top: 40px;
+		color: #fff;
+		background-color: #333333;
+		z-index: 10;
+		padding-left: 5px;
 	}
 
+	ul.sub-menu>li
+	{
+	 display: block; 
+		width: 100%;
+	}
+
+
+	ul.sub-menu>li:hover
+	{
+	 	background-color: #565557;
+	}
+
+
+	ul.sub-menu>li>ul.sub-menu 
+	{
+		display: none;
+		width: 200px;
+		position: absolute;
+		left: 185px;
+		z-index: 10;
+		top: 35px;
+		background-color: #333333;
+	}
 
 
 	#primary-navigation a, #primary-navigation a:visited
@@ -105,22 +138,28 @@ html,body
 
 	}
 
-	#primary-navigation ul.menu
+	#primary-navigation ul.menu 
 	{
-		margin-top: 8px;
+		/* margin-top: 8px; */
+		margin-left: 15px;
+		margin-bottom: 0px;
+		margin-top: 0px;
+		height: 50px;
 	}
 
 
-	#primary-navigation ul.menu>li
+	#primary-navigation ul.menu>li 
 	{
 		width: 100px;
+		/* padding-top: 20px; */
+		position: relative;
+		top: 6px;
 	}
 
-
-	#primary-navigation ul.menu>li:hover
+	#primary-navigation ul.menu>li:hover 
 	{
-		background-color: #691ccf;
-		color: #fff;
+		background-color: #565557;
+		color: #522525;
 	}
 
 	/**** Search Box Top ******/
@@ -132,13 +171,12 @@ html,body
 		/* margin-bottom: 5px; */
 	}
 
-	input.search-field
-	{
-		/*text-align: center;*/
-		color: #ba2e1f;
-		width: 250px;
-	}
-
+	input.search-field {
+/* text-align: center; */
+color: #ba2e1f;
+width: 250px;
+border: 2px solid #720326;
+}
 	input.search-submit 
 	{
 		background-color: #ba2e1f;
