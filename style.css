@@ -81,7 +81,7 @@ html,body
 		height: 50px;
 		/*overflow: hidden;*/
 		overflow: visible;
-		font-size: 25px;
+		font-size: 20px;
 		margin: 0 auto;
 		/* float: left; */
 		position: relative;
@@ -95,12 +95,12 @@ html,body
 
 	ul.menu>li>ul.sub-menu {
 		 display: none; 
-		width: 180px;
+		width: 200px;
 		position: absolute;
-		top: 40px;
+		top: 32px;
 		color: #fff;
 		background-color: #333333;
-		z-index: 10;
+		z-index: 2;
 		padding-left: 5px;
 	}
 
@@ -122,9 +122,9 @@ html,body
 		display: none;
 		width: 200px;
 		position: absolute;
-		left: 185px;
-		z-index: 10;
-		top: 35px;
+		left: 196px;
+		z-index: 2;
+		top: -20px;
 		background-color: #333333;
 	}
 
@@ -153,7 +153,7 @@ html,body
 		width: 100px;
 		/* padding-top: 20px; */
 		position: relative;
-		top: 6px;
+		top: 10px;
 	}
 
 	#primary-navigation ul.menu>li:hover 
