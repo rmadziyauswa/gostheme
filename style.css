@@ -1,0 +1,205 @@
+/*
+Theme Name: The Gospel Theme
+Theme URI: http://www.rennie.kozmikinc.com
+Author: Ransome Madziyauswa
+Author URI: http://www.rennie.kozmikinc.com
+Description: Custom Theme For gospel.kozmikinc.com by Ransome Madziyauswa
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.rennie.kozmikinc.com
+Tags: simple,elegant,clear,reading,article
+Text Domain: liquidblank
+
+
+*/
+
+*
+{
+	margin:0px;
+	padding: 0px;
+	font-family: 'Oswald', sans-serif;
+
+}
+
+html,body
+{
+	font-family: 'Oswald', sans-serif;
+	background-color: #fff;
+}
+
+
+
+@media (min-width: 992px)
+{
+
+
+	/*****************************Site Header*******************************************/
+	#topmost-nav 
+	{
+		background-color: #ba2e1f;
+		font-size: 20px;
+		color: #fff;
+		overflow: auto;
+		/*height: 50px;*/
+	}
+
+
+	#topmost-nav a, #topmost-nav a:visited
+	{
+		color: #fff;
+		text-decoration: none;
+
+	}
+
+	.menu-topmostnav ul li a:after
+	{
+		content: "  |";
+	}
+
+	.menu-topmostnav
+	 {
+		/* margin-left: 20px; */
+		margin-top: 5px;
+		margin-bottom: 5px;
+		/* float: left; */
+	}
+
+
+
+	.menu-topmostnav ul li, #primary-navigation ul li,#social-connect>ul>li
+	{
+		display: inline;
+		margin-right: 10px;
+		list-style-type: none;
+	}
+
+
+	#primary-navigation 
+	{
+		background-color: #333333;
+		width: 960px;
+		height: 50px;
+		overflow: hidden;
+		font-size: 25px;
+		 margin: 0 auto; 
+	}
+
+	#primary-navigation div
+	{
+		margin: 0px;
+	}
+
+	ul.sub-menu
+	{
+		display: none;
+	}
+
+
+
+	#primary-navigation a, #primary-navigation a:visited
+	{
+		color: #e9e8e3;
+		text-decoration: none;
+		width: 100%;
+		/*display: block;*/
+
+	}
+
+	#primary-navigation ul.menu
+	{
+		margin-top: 8px;
+	}
+
+
+	#primary-navigation ul.menu>li
+	{
+		width: 100px;
+	}
+
+
+	#primary-navigation ul.menu>li:hover
+	{
+		background-color: #691ccf;
+		color: #fff;
+	}
+
+	/**** Search Box Top ******/
+	#search-container 
+	{
+		/* float: right; */
+		/* margin-right: 20px; */
+		margin-top: 5px;
+		/* margin-bottom: 5px; */
+	}
+
+	input.search-field
+	{
+		/*text-align: center;*/
+		color: #ba2e1f;
+		width: 250px;
+	}
+
+	input.search-submit 
+	{
+		background-color: #ba2e1f;
+		color: #fff;
+		border: 2px solid #720326;
+		padding: 3px;
+		border-radius: 5px;
+	}
+
+
+	#page
+	{
+		width: 960px;
+		margin: 0 auto;
+		/*border: 1px solid #ccc;*/
+
+	}
+
+	.menu
+	{
+		list-style-type: none;
+	}
+
+	#site-title 
+	{
+		/* width: 100%; */
+		/* float: left; */
+		color: #000;
+	}
+
+
+	#site-title a,#site-title a:hover
+	{
+		color: #000;
+		text-decoration: none;
+	}
+
+
+	#site-title h1
+	{
+		font-size: 44px;
+	}
+
+	div#social-connect 
+	{
+		/*float: right;*/
+		/*width: 400px;*/
+		margin-top: 35px;
+	}
+
+	div#social-connect img
+	{
+		float: right;
+		width: 50px;
+		height: 45px;
+	}
+
+
+	#site-title-row
+	{
+		height: 150px;
+		overflow: auto;
+	}
+}
