@@ -73,6 +73,13 @@ html,body
 		list-style-type: none;
 	}
 
+	#primary-navigation 
+	{
+	 	transition: all 0.5s;
+	 	-webkit-transition: all 0.5s;
+	 	-moz-transition: all 0.5s;
+	 	-ms-transition: all 0.5s;
+	}
 
 	#primary-navigation 
 	{
@@ -101,6 +108,11 @@ html,body
 		color: #fff;
 		background-color: #333333;
 		z-index: 2;
+		/*padding-left: 5px;*/
+	}
+
+	ul.menu>li>ul.sub-menu>li a
+	{
 		padding-left: 5px;
 	}
 
@@ -110,11 +122,11 @@ html,body
 		width: 100%;
 	}
 
-
+/*
 	ul.sub-menu>li:hover
 	{
 	 	background-color: #565557;
-	}
+	}*/
 
 
 	ul.sub-menu>li>ul.sub-menu 
@@ -122,9 +134,9 @@ html,body
 		display: none;
 		width: 200px;
 		position: absolute;
-		left: 196px;
+		left: 202px;
 		z-index: 2;
-		top: -20px;
+		top: 10px;
 		background-color: #333333;
 	}
 
@@ -148,18 +160,19 @@ html,body
 	}
 
 
-	#primary-navigation ul.menu>li 
-	{
-		width: 100px;
-		/* padding-top: 20px; */
-		position: relative;
-		top: 10px;
-	}
+	#primary-navigation ul.menu>li {
+/*width: 100px;*/
+/* padding-top: 20px; */
+position: relative;
+top: 10px;
+padding-right: 10px;
+border-right: 1px solid #F5EAEA;
+}
 
-	#primary-navigation ul.menu>li:hover 
+	#primary-navigation a:hover 
 	{
-		background-color: #565557;
-		color: #522525;
+		/*background-color: #565557;*/
+		color: #ba2e1f;
 	}
 
 	/**** Search Box Top ******/
