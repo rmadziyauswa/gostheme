@@ -1,0 +1,9 @@
+To do list
+
+
+
+
+Remove bullets from sidebar lists <
+Lower h1 font size in Sidebar <
+Give h1 dark background color and forecolor <
+Sidebar anchors to have unique color <

@@ -176,7 +176,7 @@ border-right: 1px solid #F5EAEA;
 	#primary-navigation a:hover 
 	{
 		/*background-color: #565557;*/
-		color: #ba2e1f;
+		color: #C99F9B;
 	}
 
 	/**** Search Box Top ******/
@@ -283,4 +283,38 @@ border: 2px solid #720326;
 		margin-right: 10px;
 		float:right;
 	}
+
+
+
+
+	/***************************sidebar styles ***********************************************/
+	#secondary
+	{
+		color: #666666;
+		padding-top: 20px;
+	}
+
+	#secondary a,visited
+	{
+		color: #b82c1f;
+		text-decoration: none;
+	}
+
+	#secondary aside ul
+	{
+		padding: 5px;
+	}
+
+	#secondary h1 {
+	color: #F7F1F0;
+	font-size: 28px;
+	background-color: #333333;
+	padding: 10px;
+	}
+
+	#secondary ul
+	{
+		list-style-type: none;
+	}
+}
 }
