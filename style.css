@@ -27,6 +27,10 @@ html,body
 	background-color: #fff;
 }
 
+h1,h2,h3,h4,h5,h6,p,div,article,section,a,span
+{
+	font-family: 'Oswald', sans-serif;
+}
 
 
 @media (min-width: 992px)
@@ -73,12 +77,12 @@ html,body
 		list-style-type: none;
 	}
 
-	#primary-navigation 
+	#primary-navigation a
 	{
-	 	transition: all 0.5s;
-	 	-webkit-transition: all 0.5s;
-	 	-moz-transition: all 0.5s;
-	 	-ms-transition: all 0.5s;
+	 	transition: all 0.3s;
+	 	-webkit-transition: all 0.3s;
+	 	-moz-transition: all 0.3s;
+	 	-ms-transition: all 0.3s;
 	}
 
 	#primary-navigation 
@@ -252,5 +256,31 @@ border: 2px solid #720326;
 	{
 		height: 150px;
 		overflow: auto;
+	}
+
+
+	/************************************ Footer Styles ***************************************************/
+	div#footer
+	{
+		background-color: #333333;
+		width: 960px;
+		height: 50px;
+		color: white;
+		position: relative;
+		left: -15px;
+	}
+
+		div#footer a,div#footer a:visited
+	{
+		color: white;
+		text-decoration: none;
+	}
+
+
+	#site-info
+	{
+		margin-top: 10px;
+		margin-right: 10px;
+		float:right;
 	}
 }

@@ -119,3 +119,8 @@ function liquidblank_pagination()
 	{
 		wp_get_attachement_image(0);
 	}
+
+	function liquidblank_get_footer_signature()
+	{
+		echo "Copyright ". date("Y").". ". get_bloginfo('name').". Powered By <a href='http://www.wordpress.org'>Wordpress</a>";
+	}

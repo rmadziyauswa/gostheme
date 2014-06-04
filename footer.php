@@ -1,14 +1,16 @@
 
 		</div><!-- #main -->
 
-		<footer id="colophon" role="contentinfo">
+		<div id="footer">
 
 			
 
-			<div>
-				
+			<div id="site-info">
+				<?php
+					liquidblank_get_footer_signature();
+				?>
 			</div><!-- .site-info -->
-		</footer><!-- #colophon -->
+		</div><!-- #colophon -->
 	</div><!-- #page -->
 
 	<?php wp_footer(); ?>
