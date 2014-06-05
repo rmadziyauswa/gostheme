@@ -1,9 +1,9 @@
 To do list
 
+Navigational menu on firefox and chrome corrected
 
-
-
-Remove bullets from sidebar lists <
-Lower h1 font size in Sidebar <
-Give h1 dark background color and forecolor <
-Sidebar anchors to have unique color <
+Category element on individual page
+Test If there is a category, if not do not print categroy
+Add distance between category and date
+Add a tab between date and Leave a comment
+Previous Post and Next post links at bottom of page shud float left and float right respectively

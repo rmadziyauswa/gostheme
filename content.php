@@ -14,20 +14,22 @@
 			endif;
 		?>
 		<div>
-			category :
+			
 			<?php 
 
 				
-
+				echo "Category : ";
 				the_category(' ,');
 
 			?>
 		</div>
-
+		<br />
 		<div class="entry-meta">
 			<?php
 				if ( 'post' == get_post_type() )
-					the_date();
+					echo "<span class='date-link'>";
+						the_date();
+					echo "</span>";
 
 				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
 			?>
@@ -39,6 +41,10 @@
 			?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
+
+
+	<br />
+
 
 	<?php if ( is_search() ) : ?>
 	<div class="entry-summary">
