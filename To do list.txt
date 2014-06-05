@@ -2,3 +2,31 @@ To do list
 
 Navigational menu on firefox and chrome corrected
 
+Pagination on multiple post list like Index page---Have spaces above and beneath Next Page
+Link post date to page that show posts for that day like categories page
+Style tags section below posts
+Float Right topmost search box
+Headers size reduce Archives,Category,Tags,Search results pages
+Style any other html5 elements that may be used by yo users in the blog
+
+
+Register Another Sidebar For above the Footer area
+Make theme options user customisable
+	-custom header image
+	-custom background image
+	-custom background color
+	-custom site title color
+	-choose to use or not use top-nav-menu
+	-choose which social icons to include on top
+	-enter and save url's for the custom social connects chosen
+	-custom footer description i.e. Powered by etc
+
+
+Style mobile css for resolutions less than 960px
+
+
+Comments Template 
+- Style Form Controls i.e. textboxes,textareas,buttons,checkboxes,radio
+-Style alternating comments
+-Indent replies to comments
+
