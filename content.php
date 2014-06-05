@@ -13,16 +13,14 @@
 				the_title( '<h1><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 			endif;
 		?>
-		<div>
-			
-			<?php 
+		
 
-				
-				echo "Category : ";
-				the_category(' ,');
+		<?php
 
-			?>
-		</div>
+			liquidblank_the_category();
+
+		?>
+
 		<br />
 		<div class="entry-meta">
 			<?php

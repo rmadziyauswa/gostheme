@@ -33,19 +33,33 @@
 			?>
 		</div>
 
-
-		<div class="entry-meta">
 			<span class="post-format">
 				<a class="entry-format" href="<?php echo esc_url( get_post_format_link( 'aside' ) ); ?>"><?php echo get_post_format_string( 'aside' ); ?></a>
 			</span>
 
-			<?php the_date(); ?>
+		
+		<?php
 
-			<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
-			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'twentyfourteen' ), __( '1 Comment', 'twentyfourteen' ), __( '% Comments', 'twentyfourteen' ) ); ?></span>
-			<?php endif; ?>
+			liquidblank_the_category();
 
-			<?php edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' ); ?>
+		?>
+
+		<br />
+		<div class="entry-meta">
+			<?php
+				if ( 'post' == get_post_type() )
+					echo "<span class='date-link'>";
+						the_date();
+					echo "</span>";
+
+				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
+			?>
+			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'liquidblank' ), __( '1 Comment', 'liquidblank' ), __( '% Comments', 'liquidblank' ) ); ?></span>
+			<?php
+				endif;
+
+				edit_post_link( __( 'Edit', 'liquidblank' ), '<span class="edit-link">', '</span>' );
+			?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 

@@ -109,13 +109,13 @@ function liquidblank_pagination()
 					// Previous/next post navigation.
 						echo "<div class='PreviousNext'>";
 
-						echo "<div class='prev-link'>";
-						 	previous_post(); 
-						 echo "</div>";
+							echo "<div class='prev-link'>";
+							 	previous_post(); 
+							 echo "</div>";
 
-						 echo "<div class='next-link'>";
-						 	next_post(); 
-						 echo "</div>";
+							 echo "<div class='next-link'>";
+							 	next_post(); 
+							 echo "</div>";
 
 						 echo "</div>";
 					
@@ -131,4 +131,31 @@ function liquidblank_pagination()
 	function liquidblank_get_footer_signature()
 	{
 		echo "Copyright ". date("Y").". ". get_bloginfo('name').". Powered By <a href='http://www.wordpress.org'>Wordpress</a>";
+	}
+
+
+	function liquidblank_the_category()
+	{
+		$categories = get_the_category();
+		$num_cats = count($categories);
+
+		if($num_cats > 0)	//the post belongs to one or more categories
+		{	
+			echo "<div>";
+
+				if($num_cats==1)
+				{
+					echo "Category : ";
+				}
+				else
+				{
+					echo "Categories : ";
+				}
+
+				the_category(',');
+			
+			echo "</div>";
+
+
+		}
 	}
