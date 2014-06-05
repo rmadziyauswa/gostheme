@@ -18,6 +18,8 @@
 				<a href="<?php echo esc_url( get_post_format_link( 'image' ) ); ?>"><?php echo get_post_format_string( 'image' ); ?></a>
 			</span>
 
+			
+
 
 		
 		<?php

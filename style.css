@@ -112,13 +112,12 @@ h1,h2,h3,h4,h5,h6,p,div,article,section,a,span
 	#primary-navigation ul.menu
 	{
 	 	padding: 10px;
-	 	position: relative;
+	 	/*position: relative;*/
 	}
 
 	#primary-navigation ul.menu>li
 	 {
-	 	/*padding-right: 10px;*/
-		/*border-right: 1px solid #F5EAEA;*/
+		position: relative;
 	}
 
 	#primary-navigation a:hover 
@@ -133,9 +132,11 @@ h1,h2,h3,h4,h5,h6,p,div,article,section,a,span
 		display: none; 
 		width: 200px;
 		position: absolute;
-		/*top: 10px;*/
+		/*left: 130px;*/
+		top: 40px;
 		color: #fff;
 		background-color: #333333;
+		/*float: left;*/
 		z-index: 9999;
 		/*padding-left: 5px;*/
 	}
@@ -188,7 +189,7 @@ h1,h2,h3,h4,h5,h6,p,div,article,section,a,span
 	input.search-field {
 	/* text-align: center; */
 	color: #ba2e1f;
-	width: 250px;
+	/*width: 250px;*/
 	border: 2px solid #720326;
 	}
 
