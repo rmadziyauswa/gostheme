@@ -107,9 +107,17 @@ function liquidblank_pagination()
 						
 
 					// Previous/next post navigation.
-					
-						 previous_post(); 
-						 next_post(); 
+						echo "<div class='PreviousNext'>";
+
+						echo "<div class='prev-link'>";
+						 	previous_post(); 
+						 echo "</div>";
+
+						 echo "<div class='next-link'>";
+						 	next_post(); 
+						 echo "</div>";
+
+						 echo "</div>";
 					
 						
 
