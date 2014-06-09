@@ -62,5 +62,5 @@
 	</div><!-- .entry-content -->
 	<?php endif; ?>
 
-	<?php the_tags( '<footer><span>The Tags : ', ',', '</span></footer>' ); ?>
+	<?php the_tags( '<footer><span class="tags-span">The Tags : ', ',', '</span></footer>' ); ?>
 </article><!-- #post-## -->

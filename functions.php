@@ -173,5 +173,29 @@ function liquidblank_pagination()
 	}
 
 
+	add_action('admin_menu','liquidblank_add_appearance_menu');
+
+
+	function liquidblank_add_appearance_menu()
+	{
+			add_theme_page("Wawawa","Theme Options","edit_theme_options","my-theme-page","liquidblank_theme_options_page");
+	}
+
+
+	function liquidblank_theme_options_page()
+	{
+		?>
+
+		<div>
+			<h3>Theme Options For : Goscustom</h3>
+		</div>	
+
+		<?php
+	}
+
+
+
+
+
 // Implement Custom Header features.
 require get_template_directory() . '/inc/custom-header.php';
