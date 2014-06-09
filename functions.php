@@ -43,6 +43,30 @@ function liquidblank_setup() {
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
+
+	$cb_args = array(
+		'default-image' => '',
+		'default-color' => 'eff2e3',
+		'wp-head-callback' => '_custom_background_cb',
+		'admin-head-callback' =>'',
+		'admin-preview-callback' => ''
+		);
+
+	add_theme_support('custom-background',$cb_args);
+
+
+	// $ch_args = array(
+	// 	'default-image' => '',
+	// 	'default-text-color' => '000',
+	// 	'header-text' => true,
+	// 	'uploads' => true,
+	// 	'wp-head-callback' => '',
+	// 	'admin-head-callback' =>'',
+	// 	'admin-preview-callback' => ''
+	// 	);
+	// add_theme_support('custom-header',$ch_args);
+
+
 }
 
 add_action( 'after_setup_theme', 'liquidblank_setup' );
@@ -57,24 +81,6 @@ function liquidblank_widgets_init() {
 		'name'          => __( 'Primary Sidebar', 'liquidblank' ),
 		'id'            => 'sidebar-1',
 		'description'   => __( 'Main sidebar that appears on the left.', 'liquidblank' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Content Sidebar', 'liquidblank' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Additional sidebar that appears on the right.', 'liquidblank' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area', 'liquidblank' ),
-		'id'            => 'sidebar-3',
-		'description'   => __( 'Appears in the footer section of the site.', 'liquidblank' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
@@ -95,7 +101,13 @@ add_action( 'wp_enqueue_scripts', 'liquidblank_scripts' );
 function liquidblank_pagination() 
 {
 
+			echo "<div class='pagination'>";
+			
+
 						posts_nav_link();
+						
+					echo "</div>";	
+						
 						
 
 	}
@@ -130,7 +142,7 @@ function liquidblank_pagination()
 
 	function liquidblank_get_footer_signature()
 	{
-		echo "Copyright ". date("Y").". ". get_bloginfo('name').". Powered By <a href='http://www.wordpress.org'>Wordpress</a>";
+		echo "Copyright ". date("Y")." ". get_bloginfo('name').".Goscustom Theme By <a href='http://www.kozmikinc.com'>Kozmik</a>";
 	}
 
 
@@ -159,3 +171,7 @@ function liquidblank_pagination()
 
 		}
 	}
+
+
+// Implement Custom Header features.
+require get_template_directory() . '/inc/custom-header.php';

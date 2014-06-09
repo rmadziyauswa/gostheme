@@ -22,7 +22,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 <div id="page" class="container">
 	<div id="topmost-nav" class="row">
 		
@@ -30,7 +30,7 @@
 			<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_class' => 'menu' ) ); ?>
 		</div>
 
-		<div id="search-container" class="col-md-6">
+		<div id="search-container">
 			
 				<?php get_search_form(); ?>
 			
@@ -39,7 +39,7 @@
 	</div>
 
 		<div id="site-title-row" class="row">
-			<div id="site-title" class="col-md-7">
+			<div class="col-md-7 site-title">
 				<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<span id="site-description"><?php echo get_bloginfo('description'); ?></span>
 			</div>
@@ -54,12 +54,10 @@
 			</div>
 		</div>
 
-			<div id="primary-navigation" role="navigation">
-				
-				<!-- <div class="col-md-12"> -->
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'menu' ) ); ?>
-				<!-- </div> -->
-			</div>
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<button class="menu-toggle"><?php _e( 'Menu', '_liquidblank' ); ?></button>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+		</nav><!-- #site-navigation -->
 		
 
 		

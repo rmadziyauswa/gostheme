@@ -9,12 +9,12 @@ if ( post_password_required() ) {
 
 	<?php if ( have_comments() ) : ?>
 
-	<h2>
+	<h4>
 		<?php
-			printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'liquidblank' ),
+			printf( _n( 'One comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;<strong>%2$s</strong>&rdquo;', get_comments_number(), 'liquidblank' ),
 				number_format_i18n( get_comments_number() ), get_the_title() );
 		?>
-	</h2>
+	</h4>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 	<nav id="comment-nav-above" role="navigation">
