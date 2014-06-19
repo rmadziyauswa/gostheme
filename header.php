@@ -38,13 +38,13 @@
 
 	</div>
 
-		<div id="site-title-row" class="row">
-			<div class="col-md-7 site-title">
+		<div id="site-title-row">
+			<div class="site-title">
 				<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<span id="site-description"><?php echo get_bloginfo('description'); ?></span>
 			</div>
 
-			<div id="social-connect" class="col-md-5">
+			<div id="social-connect">
 				<ul class="menu">
 					<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri().'/images/facebook.png' ?>" ></a></li>
 					<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri().'/images/twitter.png' ?>" ></a></li>

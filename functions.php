@@ -80,12 +80,26 @@ function liquidblank_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Primary Sidebar', 'liquidblank' ),
 		'id'            => 'sidebar-1',
-		'description'   => __( 'Main sidebar that appears on the left.', 'liquidblank' ),
+		'description'   => __( 'Main sidebar that appears on the right.', 'liquidblank' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+
+
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Sidebar', 'liquidblank' ),
+		'id'            => 'sidebar-3',
+		'description'   => __( 'Footer sidebar that appears above copyright info.', 'liquidblank' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+
 }
 add_action( 'widgets_init', 'liquidblank_widgets_init' );
 
@@ -186,14 +200,60 @@ function liquidblank_pagination()
 	{
 		?>
 
-		<div>
-			<h3>Theme Options For : Goscustom</h3>
+		<div class="wrap">
+			<div class="icon32" id="icon-tools"> <br /> </div>
+			<h2>Customise Your Theme Options</h2>
+
+			<form action="options.php" method="post" enctype="multipart/form-data">
+
+				<?php settings_fields('liquidblank_theme_options'); ?>
+				<?php do_settings_sections(__FILE__); ?>
+
+				<p>
+					<input type='submit' name='Submit' class='button-primary' value='Save Changes' />
+				</p>
+			</form>
+
 		</div>	
 
 		<?php
 	}
 
 
+	add_action('admin_init','register_liquidblank_theme_settings');
+
+
+	function register_liquidblank_theme_settings()
+	{
+		register_setting('liquidblank_theme_options','liquidblank_theme_options','validate_setting');
+		add_settings_section('liquidblank_style_colors','Customize Theme Colors','customise_theme_colors','__FILE__');
+		add_settings_field('liquidblank_top_nav_color','Topmost Navigational Menu Background Color','top_nav_color_setting','__FILE__','liquidblank_style_colors');
+		add_settings_field('liquidblank_top_nav_text_color','Topmost Navigational Menu Text Color','top_nav_text_color_setting','__FILE__','liquidblank_style_colors');
+
+	
+
+	}
+
+		function customise_theme_colors() 
+		{
+			echo "<h2>Wahalade</h2>";
+		}
+
+
+	function top_nav_color_setting()
+	{
+		$options = get_option('liquidblank_theme_options');
+		// echo "<input type='text' name='". liquidblank_theme_options[liquidblank_top_nav_color] ." ' value='" . $options['liquidblank_top_nav_color'] ."' />";
+		echo "<input type='text' name='txtliquidblank_top_nav_color' value='" . $options['liquidblank_top_nav_color'] ."' />";
+	}
+
+
+	function top_nav_text_color_setting()
+	{
+		$options = get_option('liquidblank_theme_options');
+		// echo "<input type='text' name='". liquidblank_theme_options[liquidblank_top_nav_text_color] ." ' value='" . $options['liquidblank_top_nav_text_color'] ."' />";
+		echo "<input type='text' name='txtliquidblank_top_nav_text_color' value='" . $options['liquidblank_top_nav_text_color'] ."' />";
+	}
 
 
 
