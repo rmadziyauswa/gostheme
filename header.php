@@ -55,10 +55,12 @@
 		</div>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle">
-				<img src="<?php echo get_stylesheet_directory_uri().'/images/menualt.png'; ?>" />
-			</button>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+			<div id="small-menu">
+				<button class="menu-toggle">
+					<img src="<?php echo get_stylesheet_directory_uri().'/images/menualt.png'; ?>" />
+				</button>
+			</div>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 		</nav><!-- #site-navigation -->
 		
 

@@ -178,7 +178,7 @@ function liquidblank_pagination()
 
 	function liquidblank_add_appearance_menu()
 	{
-			add_theme_page("Wawawa","Theme Options","edit_theme_options","my-theme-page","liquidblank_theme_options_page");
+			add_theme_page("Theme Options For : Goscustom","Theme Options","edit_theme_options","my-theme-page","liquidblank_theme_options_page");
 	}
 
 

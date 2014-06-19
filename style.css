@@ -195,7 +195,129 @@ textarea {
 
 
 
-@media (min-width: 992px)
+	/*****************page items ******************************/
+
+	
+
+div#content h1
+	{
+		font-size: 30px;
+	}
+
+
+	div#content article
+	{
+		margin-bottom: 20px;
+	}
+
+
+	div#content a,visited
+	{
+		color: #b82c1f;
+		text-decoration: none;
+	}
+
+
+		div#footer a,div#footer a:visited
+	{
+		color: white;
+		text-decoration: none;
+	}
+
+
+
+	/***************************sidebar styles ***********************************************/
+	#secondary
+	{
+		color: #666666;
+		padding-top: 20px;
+		margin-bottom: 15px;
+	}
+
+	#secondary a,visited
+	{
+		color: #b82c1f;
+		text-decoration: none;
+	}
+
+	#secondary aside ul
+	{
+		padding: 5px;
+	}
+
+	#secondary h1 {
+	color: #F7F1F0;
+	font-size: 28px;
+	background-color: #333333;
+	padding: 10px;
+	}
+
+	#secondary ul
+	{
+		list-style-type: none;
+	}
+
+
+	
+
+
+
+	/***********************************Comments Section ***********************/
+	#comments {
+	background-color: #F6F3F3;
+	padding: 10px;
+	color: #8E949B;
+	}
+
+
+	#comments ol{
+		
+		list-style-type: none;
+	}
+
+	#comments ol.children{
+		
+		margin-left: 30px;
+	}
+
+	#comments code{
+		
+		white-space: inherit;
+	}
+
+	article.comment-body footer>div
+	{
+		float: left;
+		/*width: 50%;*/
+	}
+
+	article.comment-body {
+margin-bottom: 10px;
+padding-bottom: 15px;
+}
+
+
+	div.comment-metadata {
+	position: relative;
+	top: 5px;
+	padding-left: 20px;
+	}
+
+
+	div.comment-metadata:before {
+	content: '(';
+	}
+
+	div.comment-metadata:after {
+	content: ')';
+	}
+	.comment-content
+	{
+		clear: both;
+	}
+
+
+@media (min-width: 600px)
 {
 
 
@@ -315,7 +437,7 @@ textarea {
 	.main-navigation .current-menu-item a {
 	}
 	/* Small menu */
-	.menu-toggle {
+	.menu-toggle , #small-menu {
 		display: none;
 	}
 
@@ -338,7 +460,7 @@ textarea {
 	input.search-field {
 	/* text-align: center; */
 	color: #ba2e1f;
-	/*width: 250px;*/
+	width: 180px;
 	border: 2px solid #720326;
 	height: 22px;
 	}
@@ -420,11 +542,6 @@ textarea {
 		left: -15px;
 	}
 
-		div#footer a,div#footer a:visited
-	{
-		color: white;
-		text-decoration: none;
-	}
 
 
 	#site-info
@@ -435,74 +552,26 @@ textarea {
 	}
 
 
-
-
-	/***************************sidebar styles ***********************************************/
-	#secondary
+		#secondary
 	{
-		color: #666666;
-		padding-top: 20px;
 		float: left;
 		width: 25%;
-		margin-bottom: 15px;
-	}
-
-	#secondary a,visited
-	{
-		color: #b82c1f;
-		text-decoration: none;
-	}
-
-	#secondary aside ul
-	{
-		padding: 5px;
-	}
-
-	#secondary h1 {
-	color: #F7F1F0;
-	font-size: 28px;
-	background-color: #333333;
-	padding: 10px;
-	}
-
-	#secondary ul
-	{
-		list-style-type: none;
 	}
 
 
 
 	/*********************page items*********************/
 
-	#main-content , div#content
+	div#content
+	{
+		padding-right: 40px;
+	}
+
+
+	#main-content 
 	{
 		float: left;
 		width: 75%;
-	}
-
-
-	div#content
-	{
-		padding-right: 20px;
-	}
-
-
-div#content h1
-	{
-		font-size: 30px;
-	}
-
-
-	div#content article
-	{
-		margin-bottom: 20px;
-	}
-
-
-	div#content a,visited
-	{
-		color: #b82c1f;
-		text-decoration: none;
 	}
 
 
@@ -531,62 +600,6 @@ div#content h1
 
 
 
-
-	/***********************************Commenst Section ***********************/
-	#comments {
-	background-color: #F6F3F3;
-	padding: 10px;
-	color: #8E949B;
-	}
-
-
-	#comments ol{
-		
-		list-style-type: none;
-	}
-
-	#comments ol.children{
-		
-		margin-left: 30px;
-	}
-
-	#comments code{
-		
-		white-space: inherit;
-	}
-
-	article.comment-body footer>div
-	{
-		float: left;
-		/*width: 50%;*/
-	}
-
-	article.comment-body {
-margin-bottom: 10px;
-padding-bottom: 15px;
-}
-
-
-	div.comment-metadata {
-	position: relative;
-	top: 5px;
-	padding-left: 20px;
-	}
-
-
-	div.comment-metadata:before {
-	content: '(';
-	}
-
-	div.comment-metadata:after {
-	content: ')';
-	}
-	.comment-content
-	{
-		clear: both;
-	}
-
-
 }
 
 
@@ -613,7 +626,7 @@ padding-bottom: 15px;
 	}
 
 	.menu-toggle,
-	.main-navigation.toggled .nav-menu {
+	.main-navigation.toggled .nav-menu ,#small-menu{
 		display: block;
 	}
 
@@ -630,6 +643,15 @@ padding-bottom: 15px;
 		height: 30px;
 	}
 
+	#small-menu
+	{
+    background-color: rgba(173, 175, 175, 0.4);
+    line-height: 51px;
+    height: 45px;
+    margin: 0;
+    padding: 0;
+}
+
 
 	/************************************primary nav menu ************************/
 
@@ -644,12 +666,14 @@ padding-bottom: 15px;
 	.main-navigation>div
 	{
 		margin: 10px 0px;
-		background-color: #333333;
-
 		padding-bottom: 10px;
 	}
 
+	.main-navigation ul.menu
+	{
 
+		background-color: #333333;
+	}
 	.main-navigation ul 
 	{
 		list-style: none;
@@ -691,7 +715,7 @@ padding-bottom: 15px;
 	input.search-field {
 	/* text-align: center; */
 	color: #ba2e1f;
-	/*width: 250px;*/
+	width: 180px;
 	/*border: 2px solid #720326;*/
 	/*height: 22px;*/
 	}
@@ -734,7 +758,34 @@ padding: 5px;
 	}
 
 
+	/************************************ Footer Styles ***************************************************/
+	div#footer
+	{
+		clear: both;
+		background-color: #333333;
+		color: white;
+		height: 50px;
+		width: 105% !important;
+		max-width: 600px;
+		margin: 0px;
+		padding: 10px;
+		position: relative;
+		display: block;
+		left: -17px;
+
+	}
+
+	#site-info
+	{
+		width: 100%;
+		position: relative;
+		display: block;
+	}
+
+	div#content
+	{
+		padding-left: 10px;
+	}
+
 
 }
-
-
