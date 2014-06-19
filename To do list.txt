@@ -1,0 +1,29 @@
+To do list
+
+
+
+
+Link post date to page that show posts for that day like categories page
+
+
+
+Register Another Sidebar For above the Footer area
+Make theme options user customisable
+
+	-choose to use or not use top-nav-menu
+	-choose which social icons to include on top
+	-enter and save url's for the custom social connects chosen
+	-custom footer description i.e. Powered by etc
+	-custom favicon
+	-custom font
+	-add google analytics
+	-custom login page
+	-
+
+
+Style mobile css for resolutions less than 960px
+
+
+
+
+

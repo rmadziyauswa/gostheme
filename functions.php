@@ -43,6 +43,30 @@ function liquidblank_setup() {
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
+
+	$cb_args = array(
+		'default-image' => '',
+		'default-color' => 'eff2e3',
+		'wp-head-callback' => '_custom_background_cb',
+		'admin-head-callback' =>'',
+		'admin-preview-callback' => ''
+		);
+
+	add_theme_support('custom-background',$cb_args);
+
+
+	// $ch_args = array(
+	// 	'default-image' => '',
+	// 	'default-text-color' => '000',
+	// 	'header-text' => true,
+	// 	'uploads' => true,
+	// 	'wp-head-callback' => '',
+	// 	'admin-head-callback' =>'',
+	// 	'admin-preview-callback' => ''
+	// 	);
+	// add_theme_support('custom-header',$ch_args);
+
+
 }
 
 add_action( 'after_setup_theme', 'liquidblank_setup' );
@@ -56,30 +80,26 @@ function liquidblank_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Primary Sidebar', 'liquidblank' ),
 		'id'            => 'sidebar-1',
-		'description'   => __( 'Main sidebar that appears on the left.', 'liquidblank' ),
+		'description'   => __( 'Main sidebar that appears on the right.', 'liquidblank' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+
+
+
 	register_sidebar( array(
-		'name'          => __( 'Content Sidebar', 'liquidblank' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Additional sidebar that appears on the right.', 'liquidblank' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area', 'liquidblank' ),
+		'name'          => __( 'Footer Sidebar', 'liquidblank' ),
 		'id'            => 'sidebar-3',
-		'description'   => __( 'Appears in the footer section of the site.', 'liquidblank' ),
+		'description'   => __( 'Footer sidebar that appears above copyright info.', 'liquidblank' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+
+
 }
 add_action( 'widgets_init', 'liquidblank_widgets_init' );
 
@@ -95,7 +115,13 @@ add_action( 'wp_enqueue_scripts', 'liquidblank_scripts' );
 function liquidblank_pagination() 
 {
 
+			echo "<div class='pagination'>";
+			
+
 						posts_nav_link();
+						
+					echo "</div>";	
+						
 						
 
 	}
@@ -107,9 +133,17 @@ function liquidblank_pagination()
 						
 
 					// Previous/next post navigation.
-					
-						 previous_post(); 
-						 next_post(); 
+						echo "<div class='PreviousNext'>";
+
+							echo "<div class='prev-link'>";
+							 	previous_post(); 
+							 echo "</div>";
+
+							 echo "<div class='next-link'>";
+							 	next_post(); 
+							 echo "</div>";
+
+						 echo "</div>";
 					
 						
 
@@ -122,5 +156,106 @@ function liquidblank_pagination()
 
 	function liquidblank_get_footer_signature()
 	{
-		echo "Copyright ". date("Y").". ". get_bloginfo('name').". Powered By <a href='http://www.wordpress.org'>Wordpress</a>";
+		echo "Copyright ". date("Y")." ". get_bloginfo('name').".Goscustom Theme By <a href='http://www.kozmikinc.com'>Kozmik</a>";
 	}
+
+
+	function liquidblank_the_category()
+	{
+		$categories = get_the_category();
+		$num_cats = count($categories);
+
+		if($num_cats > 0)	//the post belongs to one or more categories
+		{	
+			echo "<div>";
+
+				if($num_cats==1)
+				{
+					echo "Category : ";
+				}
+				else
+				{
+					echo "Categories : ";
+				}
+
+				the_category(',');
+			
+			echo "</div>";
+
+
+		}
+	}
+
+
+	add_action('admin_menu','liquidblank_add_appearance_menu');
+
+
+	function liquidblank_add_appearance_menu()
+	{
+			add_theme_page("Theme Options For : Goscustom","Theme Options","edit_theme_options","my-theme-page","liquidblank_theme_options_page");
+	}
+
+
+	function liquidblank_theme_options_page()
+	{
+		?>
+
+		<div class="wrap">
+			<div class="icon32" id="icon-tools"> <br /> </div>
+			<h2>Customise Your Theme Options</h2>
+
+			<form action="options.php" method="post" enctype="multipart/form-data">
+
+				<?php settings_fields('liquidblank_theme_options'); ?>
+				<?php do_settings_sections(__FILE__); ?>
+
+				<p>
+					<input type='submit' name='Submit' class='button-primary' value='Save Changes' />
+				</p>
+			</form>
+
+		</div>	
+
+		<?php
+	}
+
+
+	add_action('admin_init','register_liquidblank_theme_settings');
+
+
+	function register_liquidblank_theme_settings()
+	{
+		register_setting('liquidblank_theme_options','liquidblank_theme_options','validate_setting');
+		add_settings_section('liquidblank_style_colors','Customize Theme Colors','customise_theme_colors','__FILE__');
+		add_settings_field('liquidblank_top_nav_color','Topmost Navigational Menu Background Color','top_nav_color_setting','__FILE__','liquidblank_style_colors');
+		add_settings_field('liquidblank_top_nav_text_color','Topmost Navigational Menu Text Color','top_nav_text_color_setting','__FILE__','liquidblank_style_colors');
+
+	
+
+	}
+
+		function customise_theme_colors() 
+		{
+			echo "<h2>Wahalade</h2>";
+		}
+
+
+	function top_nav_color_setting()
+	{
+		$options = get_option('liquidblank_theme_options');
+		// echo "<input type='text' name='". liquidblank_theme_options[liquidblank_top_nav_color] ." ' value='" . $options['liquidblank_top_nav_color'] ."' />";
+		echo "<input type='text' name='txtliquidblank_top_nav_color' value='" . $options['liquidblank_top_nav_color'] ."' />";
+	}
+
+
+	function top_nav_text_color_setting()
+	{
+		$options = get_option('liquidblank_theme_options');
+		// echo "<input type='text' name='". liquidblank_theme_options[liquidblank_top_nav_text_color] ." ' value='" . $options['liquidblank_top_nav_text_color'] ."' />";
+		echo "<input type='text' name='txtliquidblank_top_nav_text_color' value='" . $options['liquidblank_top_nav_text_color'] ."' />";
+	}
+
+
+
+// Implement Custom Header features.
+require get_template_directory() . '/inc/custom-header.php';

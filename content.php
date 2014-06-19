@@ -13,21 +13,21 @@
 				the_title( '<h1><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 			endif;
 		?>
-		<div>
-			category :
-			<?php 
+		
 
-				
+		<?php
 
-				the_category(' ,');
+			liquidblank_the_category();
 
-			?>
-		</div>
+		?>
 
+		<br />
 		<div class="entry-meta">
 			<?php
 				if ( 'post' == get_post_type() )
-					the_date();
+					echo "<span class='date-link'>";
+						the_date();
+					echo "</span>";
 
 				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
 			?>
@@ -39,6 +39,10 @@
 			?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
+
+
+	<br />
+
 
 	<?php if ( is_search() ) : ?>
 	<div class="entry-summary">
@@ -58,5 +62,5 @@
 	</div><!-- .entry-content -->
 	<?php endif; ?>
 
-	<?php the_tags( '<footer><span>', '', '</span></footer>' ); ?>
+	<?php the_tags( '<footer><span class="tags-span">The Tags : ', ',', '</span></footer>' ); ?>
 </article><!-- #post-## -->

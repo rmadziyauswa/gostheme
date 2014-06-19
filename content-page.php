@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>">
 	<?php
 		// Page thumbnail and title.
-		<?php get_the_post_thumbnail(); ?>
+		 get_the_post_thumbnail(); 
 		the_title( '<header><h1>', '</h1></header><!-- .entry-header -->' );
 	?>
 

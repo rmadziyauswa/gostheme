@@ -14,22 +14,36 @@
 			endif;
 		?>
 
-		<div>
-			<span >
+		<span >
 				<a href="<?php echo esc_url( get_post_format_link( 'image' ) ); ?>"><?php echo get_post_format_string( 'image' ); ?></a>
 			</span>
 
-			<div>
-			<span><?php the_category(' ,'); ?></span>
-		</div><!-- .entry-meta -->
+			
 
-			<?php the_date(); ?>
 
-			<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
+		
+		<?php
+
+			liquidblank_the_category();
+
+		?>
+
+		<br />
+		<div class="entry-meta">
+			<?php
+				if ( 'post' == get_post_type() )
+					echo "<span class='date-link'>";
+						the_date();
+					echo "</span>";
+
+				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
+			?>
 			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'liquidblank' ), __( '1 Comment', 'liquidblank' ), __( '% Comments', 'liquidblank' ) ); ?></span>
-			<?php endif; ?>
+			<?php
+				endif;
 
-			<?php edit_post_link( __( 'Edit', 'liquidblank' ), '<span class="edit-link">', '</span>' ); ?>
+				edit_post_link( __( 'Edit', 'liquidblank' ), '<span class="edit-link">', '</span>' );
+			?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
