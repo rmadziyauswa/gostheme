@@ -158,7 +158,7 @@ function liquidblank_pagination()
 	function liquidblank_get_footer_signature()
 	{
 
-		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+		$options = get_option('liquidblank_theme_options_group');
 
 		$footer_text = "Copyright ". date("Y")." ". get_bloginfo('name').".Goscustom Theme By <a href='http://www.kozmikinc.com'>Kozmik</a>";
 	
@@ -224,65 +224,85 @@ function liquidblank_pagination()
 			</style>
 
 			<div id="tabs">
+				<form action='options.php' method='post'>
 
 				<ul>
 					<li><a href="#top_nav_div">Navigation Options</a></li>
 					<li><a href="#primary_nav_div">Social Options</a></li>
 					<li><a href="#copyright_div">Copyright Text</a></li>
 					<li><a href="#scripts_div">Scripts And Custom Styles</a></li>
+					<li><a href="#contacts_div">Contact Details</a></li>
 				</ul>
 
 
 				<div id="top_nav_div">
 
-					<form action="options.php" method="post">
+					<!-- <form action="options.php" method="post"> -->
 
 						<?php settings_fields('liquidblank_theme_options_group'); ?>
 						<?php do_settings_sections(__FILE__); ?>
-						<?php submit_button(); ?>
+						<!-- <?php submit_button(); ?> -->
 
-					</form>
+					<!-- </form> -->
 				</div>
 
 
 				<div id="primary_nav_div">
 
-						<form action='options.php' method='post'>
+						<!-- <form action='options.php' method='post'> -->
 
 						<?php settings_fields('liquidblank_theme_options_group'); ?>
 						<?php do_settings_sections('my-theme-page#primary_nav_div'); ?>
-						<?php submit_button(); ?>
+						<!-- <?php submit_button(); ?> -->
 
-					</form>
+					<!-- </form> -->
 
 					</div>
 				<div id="copyright_div">
-					<form action='options.php' method='post'>
+					<!-- <form action='options.php' method='post'> -->
 
 						<?php settings_fields('liquidblank_theme_options_group'); ?>
 						<?php do_settings_sections('my-theme-page#copyright_div'); ?>
-						<?php submit_button(); ?>
+						<!-- <?php submit_button(); ?> -->
 
-					</form>
+					<!-- </form> -->
 
 
 				</div>
 
 
 				<div id="scripts_div">
-					<form action='options.php' method='post'>
+					<!-- <form action='options.php' method='post'> -->
 
 						<?php settings_fields('liquidblank_theme_options_group'); ?>
 						<?php do_settings_sections('my-theme-page#scripts_div'); ?>
-						<?php submit_button(); ?>
+						<!-- <?php submit_button(); ?> -->
 
-					</form>
+						
+
+
+					<!-- </form> -->
+
+
+				</div>
+
+
+				<div id="contacts_div">
+					<!-- <form action='options.php' method='post'> -->
+
+
+							<?php SpitOutSettings(); ?>
+
+
+					<!-- </form> -->
 
 
 				</div>
 
 			</div>
 
+			<?php submit_button("Save All Options"); ?>
+</form>
 
 		</div>	
 
@@ -291,9 +311,24 @@ function liquidblank_pagination()
 	
 
 
+	function SpitOutSettings()
+	{
+		$options = get_option('liquidblank_theme_options_group');
+
+		foreach ($options as $key => $value) {
+			
+
+			echo $key. "=" . $value . "<br />";
+		}
+
+	}
+
+
 	function register_liquidblank_theme_settings()
 	{
 		register_setting('liquidblank_theme_options_group','liquidblank_theme_options_group','validate_setting');
+		
+		//Colors Navigational Settings
 		add_settings_section('liquidblank_style_colors','Customize Theme Colors','customise_theme_colors',__FILE__);
 		add_settings_field('liquidblank_top_nav_color','Topmost Navigational Menu Background Color','top_nav_color_setting',__FILE__,'liquidblank_style_colors');
 		add_settings_field('liquidblank_top_nav_text_color','Topmost Navigational Menu Text Color','top_nav_text_color_setting',__FILE__,'liquidblank_style_colors');
@@ -301,11 +336,13 @@ function liquidblank_pagination()
 		add_settings_field('liquidblank_menu_text_color','Main Navigational Menu Text Color','main_nav_text_color_setting',__FILE__,'liquidblank_style_colors');
 
 	
+		//footer options
 		add_settings_section('liquidblank_footer_options','Options for your footer area','customise_footer_area','my-theme-page#copyright_div');
 		add_settings_field('liquidblank_footer_text','Footer text for the copyright area','fn_footer_text','my-theme-page#copyright_div','liquidblank_footer_options');
 	
 
 
+		//Social Options
 		add_settings_section('liquidblank_social_options','Social Options','custome_social_options','my-theme-page#primary_nav_div');
 		add_settings_field('liquidblank_facebok_url','Facebook URL','fn_facebook_url','my-theme-page#primary_nav_div','liquidblank_social_options');
 		add_settings_field('liquidblank_twitter_url','Twitter URL','fn_twitter_url','my-theme-page#primary_nav_div','liquidblank_social_options');
@@ -343,7 +380,7 @@ function liquidblank_pagination()
 
 	function top_nav_color_setting()
 	{
-		$options = wp_parse_args(get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings));
+		$options = get_option('liquidblank_theme_options_group');
 
 		if(isset($options['liquidblank_top_nav_color']))
 		{
@@ -374,7 +411,7 @@ function liquidblank_pagination()
 
 	function top_nav_text_color_setting()
 	{
-		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+		$options = get_option('liquidblank_theme_options_group');
 
 		if(isset($options['liquidblank_top_nav_text_color']))
 		{
@@ -397,7 +434,7 @@ function liquidblank_pagination()
 
 	function main_nav_color_setting()
 	{
-		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+		$options = get_option('liquidblank_theme_options_group');
 
 
 		if(isset($options['liquidblank_menu_color']))
@@ -421,7 +458,7 @@ function liquidblank_pagination()
 
 	function main_nav_text_color_setting()
 	{
-		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+		$options = get_option('liquidblank_theme_options_group');
 
 		if(isset($options['liquidblank_menu_text_color']))
 		{
@@ -447,7 +484,7 @@ function liquidblank_pagination()
 
 		function fn_footer_text()
 		{
-			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+			$options = get_option('liquidblank_theme_options_group');
 
 			if(isset($options['liquidblank_footer_text']))
 			{
@@ -470,7 +507,7 @@ function liquidblank_pagination()
 
 		function fn_facebook_url()
 		{
-			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+			$options = get_option('liquidblank_theme_options_group');
 
 			if(isset($options['liquidblank_facebook_url']))
 			{
@@ -494,7 +531,7 @@ function liquidblank_pagination()
 
 		function fn_twitter_url()
 		{
-			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+			$options = get_option('liquidblank_theme_options_group');
 
 			if(isset($options['liquidblank_twitter_url']))
 			{
@@ -517,7 +554,7 @@ function liquidblank_pagination()
 
 			function fn_googleplus_url()
 		{
-			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+			$options = get_option('liquidblank_theme_options_group');
 
 			if(isset($options['liquidblank_googleplus_url']))
 			{
@@ -540,7 +577,7 @@ function liquidblank_pagination()
 
 			function fn_pinterest_url()
 		{
-			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+			$options = get_option('liquidblank_theme_options_group');
 
 			if(isset($options['liquidblank_pinterest_url']))
 			{
@@ -563,7 +600,7 @@ function liquidblank_pagination()
 
 			function fn_flickr_url()
 		{
-			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+			$options = get_option('liquidblank_theme_options_group');
 
 			if(isset($options['liquidblank_flickr_url']))
 			{
@@ -603,7 +640,7 @@ function liquidblank_farbtastic_script()
 
 function liquidblank_custom_style_head()
 {
-	$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+	$options = get_option('liquidblank_theme_options_group');
 
 	if(isset($options['liquidblank_top_nav_text_color']))
 		{
