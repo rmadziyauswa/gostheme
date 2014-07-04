@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    
+  		$('#tabs').tabs();
+    
+  });
+  </script>
+</head>
+<body>
+
+<div id="tabs">
+
+				<ul>
+					<li><a href="#top_nav_div">Top Navigation Options</a></li>
+					<li><a href="#primary_nav_div">Primary Navigation Options</a></li>
+					<li><a href="#copyright_div">Copyright Text</a></li>
+				</ul>
+
+
+				<div id="top_nav_div">
+
+					<form action="options.php" method="post">
+
+						<?php settings_fields('liquidblank_theme_options_group'); ?>
+						<?php do_settings_sections(__FILE__); ?>
+						<?php submit_button(); ?>
+
+					</form>
+				</div>
+
+
+				<div id="primary_nav_div">
+
+					<p>Lorem Ipsum Dolor</p>
+
+					</div>
+				<div id="copyright_div">
+
+						<p>Loose lips looose lips loose slips</p>
+
+				</div>
+
+			</div>
+</body>
+</html>

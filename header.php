@@ -19,7 +19,13 @@
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
+
+
 	<?php wp_head(); ?>
+
+	<?php liquidblank_custom_style_head(); ?>
+
+	
 </head>
 
 <body <?php body_class(); ?>>

@@ -108,6 +108,7 @@ function liquidblank_scripts() {
 	
 	wp_enqueue_style( 'liquidblank-style', get_stylesheet_uri());
 	wp_enqueue_script( 'liquidblank-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '', true );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'liquidblank_scripts' );
@@ -156,7 +157,19 @@ function liquidblank_pagination()
 
 	function liquidblank_get_footer_signature()
 	{
-		echo "Copyright ". date("Y")." ". get_bloginfo('name').".Goscustom Theme By <a href='http://www.kozmikinc.com'>Kozmik</a>";
+
+		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+		$footer_text = "Copyright ". date("Y")." ". get_bloginfo('name').".Goscustom Theme By <a href='http://www.kozmikinc.com'>Kozmik</a>";
+	
+		if(isset($options['liquidblank_footer_text']))
+		{
+			$footer_text = $options['liquidblank_footer_text'];
+			
+		}
+
+		echo $footer_text;
+
 	}
 
 
@@ -201,60 +214,413 @@ function liquidblank_pagination()
 		?>
 
 		<div class="wrap">
-			<div class="icon32" id="icon-tools"> <br /> </div>
-			<h2>Customise Your Theme Options</h2>
+			<div id="icon-tools" class="icon32"></div>
+			<h3>Customise Your Theme Options</h3>
 
-			<form action="options.php" method="post" enctype="multipart/form-data">
+			<style type="text/css">
+				.form-table th {
+					width: 325px;
+					}
+			</style>
 
-				<?php settings_fields('liquidblank_theme_options'); ?>
-				<?php do_settings_sections(__FILE__); ?>
+			<div id="tabs">
 
-				<p>
-					<input type='submit' name='Submit' class='button-primary' value='Save Changes' />
-				</p>
-			</form>
+				<ul>
+					<li><a href="#top_nav_div">Navigation Options</a></li>
+					<li><a href="#primary_nav_div">Social Options</a></li>
+					<li><a href="#copyright_div">Copyright Text</a></li>
+					<li><a href="#scripts_div">Scripts And Custom Styles</a></li>
+				</ul>
+
+
+				<div id="top_nav_div">
+
+					<form action="options.php" method="post">
+
+						<?php settings_fields('liquidblank_theme_options_group'); ?>
+						<?php do_settings_sections(__FILE__); ?>
+						<?php submit_button(); ?>
+
+					</form>
+				</div>
+
+
+				<div id="primary_nav_div">
+
+						<form action='options.php' method='post'>
+
+						<?php settings_fields('liquidblank_theme_options_group'); ?>
+						<?php do_settings_sections('my-theme-page#primary_nav_div'); ?>
+						<?php submit_button(); ?>
+
+					</form>
+
+					</div>
+				<div id="copyright_div">
+					<form action='options.php' method='post'>
+
+						<?php settings_fields('liquidblank_theme_options_group'); ?>
+						<?php do_settings_sections('my-theme-page#copyright_div'); ?>
+						<?php submit_button(); ?>
+
+					</form>
+
+
+				</div>
+
+
+				<div id="scripts_div">
+					<form action='options.php' method='post'>
+
+						<?php settings_fields('liquidblank_theme_options_group'); ?>
+						<?php do_settings_sections('my-theme-page#scripts_div'); ?>
+						<?php submit_button(); ?>
+
+					</form>
+
+
+				</div>
+
+			</div>
+
 
 		</div>	
 
 		<?php
 	}
-
-
-	add_action('admin_init','register_liquidblank_theme_settings');
+	
 
 
 	function register_liquidblank_theme_settings()
 	{
-		register_setting('liquidblank_theme_options','liquidblank_theme_options','validate_setting');
-		add_settings_section('liquidblank_style_colors','Customize Theme Colors','customise_theme_colors','__FILE__');
-		add_settings_field('liquidblank_top_nav_color','Topmost Navigational Menu Background Color','top_nav_color_setting','__FILE__','liquidblank_style_colors');
-		add_settings_field('liquidblank_top_nav_text_color','Topmost Navigational Menu Text Color','top_nav_text_color_setting','__FILE__','liquidblank_style_colors');
+		register_setting('liquidblank_theme_options_group','liquidblank_theme_options_group','validate_setting');
+		add_settings_section('liquidblank_style_colors','Customize Theme Colors','customise_theme_colors',__FILE__);
+		add_settings_field('liquidblank_top_nav_color','Topmost Navigational Menu Background Color','top_nav_color_setting',__FILE__,'liquidblank_style_colors');
+		add_settings_field('liquidblank_top_nav_text_color','Topmost Navigational Menu Text Color','top_nav_text_color_setting',__FILE__,'liquidblank_style_colors');
+		add_settings_field('liquidblank_menu_color','Main Navigational Menu Background Color','main_nav_color_setting',__FILE__,'liquidblank_style_colors');
+		add_settings_field('liquidblank_menu_text_color','Main Navigational Menu Text Color','main_nav_text_color_setting',__FILE__,'liquidblank_style_colors');
 
 	
+		add_settings_section('liquidblank_footer_options','Options for your footer area','customise_footer_area','my-theme-page#copyright_div');
+		add_settings_field('liquidblank_footer_text','Footer text for the copyright area','fn_footer_text','my-theme-page#copyright_div','liquidblank_footer_options');
+	
 
+
+		add_settings_section('liquidblank_social_options','Social Options','custome_social_options','my-theme-page#primary_nav_div');
+		add_settings_field('liquidblank_facebok_url','Facebook URL','fn_facebook_url','my-theme-page#primary_nav_div','liquidblank_social_options');
+		add_settings_field('liquidblank_twitter_url','Twitter URL','fn_twitter_url','my-theme-page#primary_nav_div','liquidblank_social_options');
+		add_settings_field('liquidblank_googleplus_url','Google Plus URL','fn_googleplus_url','my-theme-page#primary_nav_div','liquidblank_social_options');
+		add_settings_field('liquidblank_pinterest_url','Pinterest URL','fn_pinterest_url','my-theme-page#primary_nav_div','liquidblank_social_options');
+		add_settings_field('liquidblank_flickr_url','Flickr URL','fn_flickr_url','my-theme-page#primary_nav_div','liquidblank_social_options');
+	
 	}
+
+	add_action('admin_init','register_liquidblank_theme_settings');
+
 
 		function customise_theme_colors() 
 		{
-			echo "<h2>Wahalade</h2>";
+			
 		}
 
 
+		function customise_footer_area() 
+		{
+			
+		}
+
+
+
+		function custome_social_options() 
+		{
+			
+		}
+
+	function validate_setting($input)
+	{
+		return $input;
+	}
+
 	function top_nav_color_setting()
 	{
-		$options = get_option('liquidblank_theme_options');
-		// echo "<input type='text' name='". liquidblank_theme_options[liquidblank_top_nav_color] ." ' value='" . $options['liquidblank_top_nav_color'] ."' />";
-		echo "<input type='text' name='txtliquidblank_top_nav_color' value='" . $options['liquidblank_top_nav_color'] ."' />";
+		$options = wp_parse_args(get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings));
+
+		if(isset($options['liquidblank_top_nav_color']))
+		{
+			echo "			
+			<input type='text' id='txtliquidblank_top_nav_color' name='liquidblank_theme_options_group[liquidblank_top_nav_color]' value='{$options['liquidblank_top_nav_color']}' />
+			<div id='topnav_color_picker'></div>
+			";
+		
+			
+		}
+		else
+		{
+			echo "			
+			<input type='text' id='txtliquidblank_top_nav_color' name='liquidblank_theme_options_group[liquidblank_top_nav_color]' value='#ba2e1f' />
+			<div id='topnav_color_picker'></div>
+			";		
+
+			// echo $options['liquidblank_top_nav_color'];
+
+
+		}
+
+
+
+		
 	}
 
 
 	function top_nav_text_color_setting()
 	{
-		$options = get_option('liquidblank_theme_options');
-		// echo "<input type='text' name='". liquidblank_theme_options[liquidblank_top_nav_text_color] ." ' value='" . $options['liquidblank_top_nav_text_color'] ."' />";
-		echo "<input type='text' name='txtliquidblank_top_nav_text_color' value='" . $options['liquidblank_top_nav_text_color'] ."' />";
+		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+		if(isset($options['liquidblank_top_nav_text_color']))
+		{
+
+			echo "
+			<input type='text' id='txtliquidblank_top_nav_text_color' name='liquidblank_theme_options_group[liquidblank_top_nav_text_color]' value='{$options['liquidblank_top_nav_text_color'] }' />
+			<div id='top_nav_text_color_picker'></div>
+			";
+		
+		}
+		else
+		{
+			echo "
+			<input type='text' id='txtliquidblank_top_nav_text_color' name='liquidblank_theme_options_group[liquidblank_top_nav_text_color]' value='#fff' />
+			<div id='top_nav_text_color_picker'></div>
+			";		}
+
 	}
 
+
+	function main_nav_color_setting()
+	{
+		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+
+		if(isset($options['liquidblank_menu_color']))
+		{
+
+			echo "
+				<input type='text' id='txtliquidblank_menu_nav_color' name='liquidblank_theme_options_group[liquidblank_menu_color]' value='{$options['liquidblank_menu_color']}' />
+				<div id='liquidblank_menu_color_picker'></div>
+			";
+		}
+		else
+		{
+			echo "
+				<input type='text' id='txtliquidblank_menu_nav_color' name='liquidblank_theme_options_group[liquidblank_menu_color]' value='#333333' />
+				<div id='liquidblank_menu_color_picker'></div>
+			";
+
+		}
+	}
+
+
+	function main_nav_text_color_setting()
+	{
+		$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+		if(isset($options['liquidblank_menu_text_color']))
+		{
+
+			echo "
+				<input type='text' id='txtliquidblank_menu_nav_text_color' name='liquidblank_theme_options_group[liquidblank_menu_text_color]' value='{$options['liquidblank_menu_text_color']}' />
+				<div id='liquidblank_menu_text_color_picker'></div>
+			";
+
+
+		}
+		else
+		{
+
+			echo "
+				<input type='text' id='txtliquidblank_menu_nav_text_color' name='liquidblank_theme_options_group[liquidblank_menu_text_color]' value='#e9e8e3' />
+				<div id='liquidblank_menu_text_color_picker'></div>
+			";
+		}
+	}
+
+
+
+		function fn_footer_text()
+		{
+			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+			if(isset($options['liquidblank_footer_text']))
+			{
+
+				echo "
+					<textarea id='txtliquidblank_footer_text' name='liquidblank_theme_options_group[liquidblank_footer_text]'> {$options['liquidblank_footer_text']} </textarea>
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<textarea id='txtliquidblank_footer_text' name='liquidblank_theme_options_group[liquidblank_footer_text]'></textarea>
+				";
+			}
+		}
+
+
+		function fn_facebook_url()
+		{
+			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+			if(isset($options['liquidblank_facebook_url']))
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_facebook_url' name='liquidblank_theme_options_group[liquidblank_facebook_url]' value='{$options['liquidblank_facebook_url']}' />
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<input type='text' id='txtliquidblank_facebook_url' name='liquidblank_theme_options_group[liquidblank_facebook_url]' value='' />
+				";
+			}
+		}
+
+
+
+		function fn_twitter_url()
+		{
+			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+			if(isset($options['liquidblank_twitter_url']))
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_twitter_url' name='liquidblank_theme_options_group[liquidblank_twitter_url]' value='{$options['liquidblank_twitter_url']}' />
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<input type='text' id='txtliquidblank_twitter_url' name='liquidblank_theme_options_group[liquidblank_twitter_url]' value='' />
+				";
+			}
+		}
+
+
+			function fn_googleplus_url()
+		{
+			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+			if(isset($options['liquidblank_googleplus_url']))
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_googleplus_url' name='liquidblank_theme_options_group[liquidblank_googleplus_url]' value='{$options['liquidblank_googleplus_url']}' />
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<input type='text' id='txtliquidblank_googleplus_url' name='liquidblank_theme_options_group[liquidblank_googleplus_url]' value='' />
+				";
+			}
+		}
+
+
+			function fn_pinterest_url()
+		{
+			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+			if(isset($options['liquidblank_pinterest_url']))
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_pinterest_url' name='liquidblank_theme_options_group[liquidblank_pinterest_url]' value='{$options['liquidblank_pinterest_url']}' />
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<input type='text' id='txtliquidblank_pinterest_url' name='liquidblank_theme_options_group[liquidblank_pinterest_url]' value='' />
+				";
+			}
+		}
+
+
+			function fn_flickr_url()
+		{
+			$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+			if(isset($options['liquidblank_flickr_url']))
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_flickr_url' name='liquidblank_theme_options_group[liquidblank_flickr_url]' value='{$options['liquidblank_flickr_url']}' />
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<input type='text' id='txtliquidblank_flickr_url' name='liquidblank_theme_options_group[liquidblank_flickr_url]' value='' />
+				";
+			}
+		}
+
+
+
+add_action('init','liquidblank_farbtastic_script');
+
+function liquidblank_farbtastic_script()
+{
+		wp_enqueue_script('farbtastic');
+		wp_enqueue_style('farbtastic');
+		wp_enqueue_script( 'liquidblank-script', get_template_directory_uri() . '/js/farbtasticjs.js', array( 'jquery' ), '', true );
+		wp_enqueue_script( 'jquery-ui-core','',array('jquery'),'',true);
+		wp_enqueue_script( 'jquery-ui-widget');
+		wp_enqueue_script( 'jquery-ui-tabs');
+		wp_enqueue_style('jqueryuistylesheet', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/cupertino/jquery-ui.css');
+		wp_enqueue_style('fontawesome', '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css');
+
+}
+
+
+function liquidblank_custom_style_head()
+{
+	$options = get_option('liquidblank_theme_options_group',$liquidblank_defaults_settings);
+
+	if(isset($options['liquidblank_top_nav_text_color']))
+		{
+
+			echo "
+				<style type='text/css'>
+					#topmost-nav {
+							background-color:".  $options['liquidblank_top_nav_color'] ." ;
+							color: ". $options['liquidblank_top_nav_text_color'] ." ;
+						}
+				</style>
+
+			";
+
+		}
+
+}
 
 
 // Implement Custom Header features.
