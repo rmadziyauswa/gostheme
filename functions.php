@@ -272,36 +272,28 @@ function liquidblank_pagination()
 
 
 				<div id="scripts_div">
-					<!-- <form action='options.php' method='post'> -->
 
 						<?php settings_fields('liquidblank_theme_options_group'); ?>
 						<?php do_settings_sections('my-theme-page#scripts_div'); ?>
-						<!-- <?php submit_button(); ?> -->
-
-						
-
-
-					<!-- </form> -->
 
 
 				</div>
 
 
 				<div id="contacts_div">
-					<!-- <form action='options.php' method='post'> -->
 
 
-							<?php SpitOutSettings(); ?>
+						 <?php settings_fields('liquidblank_theme_options_group'); ?>
+						 <?php do_settings_sections('my-theme-page#contacts_div'); ?>
 
-
-					<!-- </form> -->
-
+<!-- 						<?php SpitOutSettings(); ?>
+ -->
 
 				</div>
 
 			</div>
 
-			<?php submit_button("Save All Options"); ?>
+			<?php submit_button(); ?>
 </form>
 
 		</div>	
@@ -350,6 +342,24 @@ function liquidblank_pagination()
 		add_settings_field('liquidblank_pinterest_url','Pinterest URL','fn_pinterest_url','my-theme-page#primary_nav_div','liquidblank_social_options');
 		add_settings_field('liquidblank_flickr_url','Flickr URL','fn_flickr_url','my-theme-page#primary_nav_div','liquidblank_social_options');
 	
+
+		//scripts/styles options
+		add_settings_section('liquidblank_scripts_options','Add Custom CSS & Scripts','customise_scripts_area','my-theme-page#scripts_div');
+		add_settings_field('liquidblank_custom_css','Custom CSS','fn_custom_css','my-theme-page#scripts_div','liquidblank_scripts_options');
+		add_settings_field('liquidblank_analytics_code','Google Analytics Code','fn_analytics_code','my-theme-page#scripts_div','liquidblank_scripts_options');
+	
+
+
+		//contact details options
+		add_settings_section('liquidblank_contact_options','Contact Details For Your Contacts Page','customise_contacts_area','my-theme-page#contacts_div');
+		add_settings_field('liquidblank_contact_address','Your Physical Address','fn_contact_address','my-theme-page#contacts_div','liquidblank_contact_options');
+		add_settings_field('liquidblank_contact_phone','Your Phone Number','fn_contact_phone','my-theme-page#contacts_div','liquidblank_contact_options');
+		add_settings_field('liquidblank_contact_email','Your Email Address','fn_contact_email','my-theme-page#contacts_div','liquidblank_contact_options');
+		add_settings_field('liquidblank_contact_map_code','Your Google Map Emded Code','fn_contact_map_code','my-theme-page#contacts_div','liquidblank_contact_options');
+	
+
+
+
 	}
 
 	add_action('admin_init','register_liquidblank_theme_settings');
@@ -369,6 +379,18 @@ function liquidblank_pagination()
 
 
 		function custome_social_options() 
+		{
+			
+		}
+
+
+
+		function customise_scripts_area() 
+		{
+			
+		}
+
+		function customise_contacts_area() 
 		{
 			
 		}
@@ -617,6 +639,151 @@ function liquidblank_pagination()
 					echo "
 					<input type='text' id='txtliquidblank_flickr_url' name='liquidblank_theme_options_group[liquidblank_flickr_url]' value='' />
 				";
+			}
+		}
+
+
+
+
+		function fn_custom_css()
+		{
+			$options = get_option('liquidblank_theme_options_group');
+
+			if(isset($options['liquidblank_custom_css']))
+			{
+
+				echo "
+					<textarea id='txtliquidblank_custom_css' name='liquidblank_theme_options_group[liquidblank_custom_css]'> {$options['liquidblank_custom_css']} </textarea>
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<textarea id='txtliquidblank_custom_css' name='liquidblank_theme_options_group[liquidblank_custom_css]'>  </textarea>
+				";
+			}
+		}
+
+
+
+
+		function fn_analytics_code()
+		{
+			$options = get_option('liquidblank_theme_options_group');
+
+			if(isset($options['liquidblank_analytics_code']))
+			{
+
+				echo "
+					<textarea id='txtliquidblank_analytics_code' name='liquidblank_theme_options_group[liquidblank_analytics_code]'> {$options['liquidblank_analytics_code']} </textarea>
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<textarea id='txtliquidblank_analytics_code' name='liquidblank_theme_options_group[liquidblank_analytics_code]'>  </textarea>
+				";
+			}
+		}
+
+
+			function fn_contact_address()
+		{
+			$options = get_option('liquidblank_theme_options_group');
+
+			if(isset($options['liquidblank_contact_address']))
+			{
+
+				echo "
+					<textarea id='txtliquidblank_contact_address' name='liquidblank_theme_options_group[liquidblank_contact_address]'> {$options['liquidblank_contact_address']} </textarea>
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<textarea id='txtliquidblank_contact_address' name='liquidblank_theme_options_group[liquidblank_contact_address]'>  </textarea>
+				";
+			}
+		}
+
+
+			function fn_contact_map_code()
+		{
+			$options = get_option('liquidblank_theme_options_group');
+
+			if(isset($options['liquidblank_contact_map_code']))
+			{
+
+				echo "
+					<textarea id='txtliquidblank_contact_map_code' name='liquidblank_theme_options_group[liquidblank_contact_map_code]'> {$options['liquidblank_contact_map_code']} </textarea>
+				";
+
+
+			}
+			else
+			{
+
+				echo "
+					<textarea id='txtliquidblank_contact_map_code' name='liquidblank_theme_options_group[liquidblank_contact_map_code]'>  </textarea>
+				";
+			}
+		}
+
+
+
+		function fn_contact_email()
+		{
+			$options = get_option('liquidblank_theme_options_group');
+
+			if(isset($options['liquidblank_contact_email']))
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_contact_email' name='liquidblank_theme_options_group[liquidblank_contact_email]' value='{$options['liquidblank_contact_email']}' />
+				";
+
+
+			}
+			else
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_contact_email' name='liquidblank_theme_options_group[liquidblank_contact_email]' value='' />
+				";
+			}
+		}
+
+
+
+		function fn_contact_phone()
+		{
+			$options = get_option('liquidblank_theme_options_group');
+
+			if(isset($options['liquidblank_contact_phone']))
+			{
+
+				echo "
+					<input type='text' id='txtliquidblank_contact_phone' name='liquidblank_theme_options_group[liquidblank_contact_phone]' value='{$options['liquidblank_contact_phone']}' />
+				";
+
+
+			}
+			else
+			{
+
+					echo "
+					<input type='text' id='txtliquidblank_contact_phone' name='liquidblank_theme_options_group[liquidblank_contact_phone]' value='' />
+				";
+
 			}
 		}
 
