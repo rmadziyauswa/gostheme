@@ -1277,6 +1277,11 @@ function liquidblank_login_form()
 	}
 	else
 	{
+		if(!current_user_can('edit_posts'))
+		{
+			show_admin_bar(false);
+		}
+		
 		wp_loginout(get_home_url());
 	}
 

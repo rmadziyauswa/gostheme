@@ -6,9 +6,6 @@ Pimp out Post Date to be more colorful
 
 
 
-Add a slider
-
-
 Custom page templates
 	- Contact
 	- Login
@@ -23,9 +20,6 @@ Style Theme options page to look proper
 
 Clean up code to be more object oriented especially functions.php page and js files
 
-
-	Plugins
-		- Login plugin
 
 
 Add Woocommerce integration
