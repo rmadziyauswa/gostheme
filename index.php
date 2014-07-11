@@ -20,6 +20,8 @@ get_header(); ?>
 				// Previous/next post navigation.
 				liquidblank_pagination();
 
+				liquidblank_share_post();
+
 
 			else :
 				// If no content, include the "No posts found" template.

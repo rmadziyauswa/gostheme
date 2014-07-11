@@ -2,32 +2,22 @@ To do list
 
 
 
+Pimp out Post Date to be more colorful
 
-Link post date to page that show posts for that day like categories page
 
-Register 3 footer sidebars
+
+Add a slider
 
 
 Custom page templates
 	- Contact
-	-Login
+	- Login
 	- Full width page
-	-
+	-Left sidebar
+	-Right Sidebar
+	-Both left and right sidebars
 
 
-
-
-Make theme options user customisable
-
-	-choose to use or not use top-nav-menu
-	-custom favicon
-	-custom font
-	-add google analytics code
-	- add custom css
-	-add custom contact details
-		- include google maps integrations
-	-custom login page
-	-CUSTOM CONTACT PAGE
 
 Style Theme options page to look proper
 
@@ -35,12 +25,12 @@ Clean up code to be more object oriented especially functions.php page and js fi
 
 
 	Plugins
-		-shortcodes for font awesome
-		-
+		- Login plugin
 
 
 Add Woocommerce integration
-Add buddy press integration
+
+Add security to all user input especially theme options page
 
 
 
